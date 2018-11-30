@@ -1,2 +1,4 @@
-module net.joshuad.test {
+module com.greetings {
+   requires javafx.graphics;
+   requires javafx.controls;
 }

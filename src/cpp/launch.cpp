@@ -4,13 +4,16 @@ int main() {
    JavaVM *jvm; 
    JNIEnv *env;
    JavaVMInitArgs vm_args; 
-   JavaVMOption* options = new JavaVMOption[1];
+   JavaVMOption* options = new JavaVMOption[3];
    
-   int index = 0;
-   options[index].optionString = (char *)"-Djava.class.path=./main.jar";
+   options[0].optionString = (char *)"-Djava.class.path=./main.jar";
+   options[1].optionString = (char *)"--module-path=./jfx";
+   options[2].optionString = (char *)"--add-modules=javafx.controls";
+
+   //-cp main.jar --module-path ./jfx --add-modules=javafx.controls net.joshuad.test.Main
 
    vm_args.version = JNI_VERSION_10;
-   vm_args.nOptions = 1;
+   vm_args.nOptions = 3;
    vm_args.options = options;
    vm_args.ignoreUnrecognized = false;
    JNI_CreateJavaVM(&jvm, (void**)&env, &vm_args);
