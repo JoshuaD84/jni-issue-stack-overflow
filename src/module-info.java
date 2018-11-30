@@ -1,0 +1,2 @@
+module net.joshuad.test {
+}
